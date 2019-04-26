@@ -36,7 +36,7 @@ action :create do
   Dir.glob(new_resource.certs_glob).each do |cert|
     link cert do
       case node['platform']
-      when 'ubuntu'
+      when 'ubuntu', 'debian'
         to new_resource.root_cabundle
       else
         to new_resource.ca_bundle
