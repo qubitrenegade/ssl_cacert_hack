@@ -10,6 +10,6 @@ chef_version      '>= 13.0'
 issues_url 'https://github.com/qubitrenegade/ssl_cacert_hack/issues'
 source_url 'https://github.com/qubitrenegade/ssl_cacert_hack'
 
-%w(centos redhat ubuntu).each do |os|
+%w(centos redhat ubuntu debian).each do |os|
   supports os
 end
