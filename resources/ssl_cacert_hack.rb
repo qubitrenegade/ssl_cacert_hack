@@ -1,7 +1,5 @@
 resource_name :ssl_cacert_hack
 
-# property :the_name, String, name_property: true
-
 property :ca_source, String, default: 'ca-bundle.crt'
 property :ca_bundle, String, default: '/etc/pki/tls/certs/ca-bundle.crt'
 
