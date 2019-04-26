@@ -1,0 +1,43 @@
+addons:
+  apt:
+    sources:
+      - chef-current-trusty
+    packages:
+      - chefdk
+
+# Don't `bundle install` which takes about 1.5 mins
+install: echo "skip bundle install"
+
+branches:
+  only:
+    - master
+
+services: docker
+
+env:
+  matrix:
+  - CHEF_VERSION=13 INSTANCE=ubuntu-16.04
+  - CHEF_VERSION=13 INSTANCE=ubuntu-18.04
+  - CHEF_VERSION=13 INSTANCE=centos-6
+  - CHEF_VERSION=13 INSTANCE=centos-7
+  - CHEF_VERSION=13 INSTANCE=debian-10
+  - CHEF_VERSION=14 INSTANCE=ubuntu-16.04
+  - CHEF_VERSION=14 INSTANCE=ubuntu-18.04
+  - CHEF_VERSION=14 INSTANCE=centos-6
+  - CHEF_VERSION=14 INSTANCE=centos-7
+  - CHEF_VERSION=14 INSTANCE=debian-10
+
+before_script:
+  - sudo iptables -L DOCKER || ( echo "DOCKER iptables chain missing" ; sudo iptables -N DOCKER )
+  - eval "$(/opt/chefdk/bin/chef shell-init bash)"
+  - chef --version
+  - cookstyle --version
+  - foodcritic --version
+
+script: KITCHEN_LOCAL_YAML=.kitchen.yml CHEF_VERSION=${CHEF_VERSION} kitchen verify ${INSTANCE}
+
+matrix:
+  include:
+    - script:
+      - chef exec delivery local all
+      env: UNIT_AND_LINT=1
