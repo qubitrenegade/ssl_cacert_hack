@@ -27,7 +27,6 @@ describe 'ssl_cacert_hack' do
       it { is_expected.to create_cookbook_file '/etc/ssl/certs/ca-certificates.crt' }
       it { is_expected.to_not create_link '/etc/pki/tls/certs/ca-bundle.crt' }
       it { is_expected.to create_link '/opt/chef/embedded/ssl/certs/cacert.pem' }
-
     end
   end
 end

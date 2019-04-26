@@ -24,9 +24,9 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-log %q(You probably don't want this warning) do
+log "You probably don't want this warning" do
   level :warn
-  message %Q(\n\n!!! You probably shouldn't be using this recipe, use the ssl_cacert_hack resoure instead !!!)
+  message %(\n\n!!! You probably shouldn't be using this recipe, use the ssl_cacert_hack resoure instead !!!)
   action :write
 end
 

@@ -15,7 +15,6 @@ property :root_cabundle, String, default: lazy {
   end
 }
 
-
 action :create do
   cookbook_file new_resource.root_cabundle do
     source new_resource.ca_source

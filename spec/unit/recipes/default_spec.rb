@@ -39,7 +39,7 @@ describe 'ssl_cacert_hack::default' do
       expect { chef_run }.to_not raise_error
     end
 
-    it { is_expected.to write_log(%q(You probably don't want this warning)) }
+    it { is_expected.to write_log("You probably don't want this warning") }
     it { is_expected.to create_ssl_cacert_hack 'default' }
   end
 
@@ -55,7 +55,7 @@ describe 'ssl_cacert_hack::default' do
       expect { chef_run }.to_not raise_error
     end
 
-    it { is_expected.to write_log(%q(You probably don't want this warning)) }
+    it { is_expected.to write_log("You probably don't want this warning") }
     it { is_expected.to create_ssl_cacert_hack 'default' }
   end
 end

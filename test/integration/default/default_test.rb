@@ -45,7 +45,7 @@ unless os.windows?
       # ✔  should exist
       # ✔  should be symlink
       # ✔  should be linked to "/etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem"
-      # ×  shallow_link_path 
+      # ×  shallow_link_path
       # No such file or directory @ rb_readlink - /opt/chef/embedded/ssl/certs/cacert.pem
     end
   end
