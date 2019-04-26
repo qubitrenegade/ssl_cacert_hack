@@ -16,13 +16,13 @@ services: docker
 
 env:
   matrix:
-  - CHEF_VERSION=13 INSTANCE=ubuntu-16.04
-  - CHEF_VERSION=13 INSTANCE=ubuntu-18.04
+  - CHEF_VERSION=13 INSTANCE=ubuntu-1604
+  - CHEF_VERSION=13 INSTANCE=ubuntu-1804
   - CHEF_VERSION=13 INSTANCE=centos-6
   - CHEF_VERSION=13 INSTANCE=centos-7
   - CHEF_VERSION=13 INSTANCE=debian-10
-  - CHEF_VERSION=14 INSTANCE=ubuntu-16.04
-  - CHEF_VERSION=14 INSTANCE=ubuntu-18.04
+  - CHEF_VERSION=14 INSTANCE=ubuntu-1604
+  - CHEF_VERSION=14 INSTANCE=ubuntu-1804
   - CHEF_VERSION=14 INSTANCE=centos-6
   - CHEF_VERSION=14 INSTANCE=centos-7
   - CHEF_VERSION=14 INSTANCE=debian-10
@@ -39,5 +39,5 @@ script: KITCHEN_LOCAL_YAML=.kitchen.yml CHEF_VERSION=${CHEF_VERSION} kitchen ver
 matrix:
   include:
     - script:
-      - chef exec delivery local all
+      - chef exec delivery local verify
       env: UNIT_AND_LINT=1
