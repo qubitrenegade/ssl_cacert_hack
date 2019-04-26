@@ -1,6 +1,6 @@
 resource_name :ssl_cacert_hack
 
-property :name, String, name_property: true
+# property :the_name, String, name_property: true
 
 property :ca_source, String, default: 'ca-bundle.crt'
 property :ca_bundle, String, default: '/etc/pki/tls/certs/ca-bundle.crt'
@@ -35,7 +35,7 @@ action :create do
 
   Dir.glob(new_resource.certs_glob).each do |cert|
     link cert do
-      case node[:platform]
+      case node['platform']
       when 'ubuntu'
         to new_resource.root_cabundle
       else

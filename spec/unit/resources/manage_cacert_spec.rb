@@ -20,6 +20,7 @@ describe 'ssl_cacert_hack' do
       it { is_expected.to create_cookbook_file '/etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem' }
       it { is_expected.to create_link '/etc/pki/tls/certs/ca-bundle.crt' }
       it { is_expected.to create_link '/opt/chef/embedded/ssl/certs/cacert.pem' }
+      it { is_expected.to create_ssl_cacert_hack 'test' }
     end
 
     context 'On Ubuntu with default attributes' do
@@ -27,6 +28,7 @@ describe 'ssl_cacert_hack' do
       it { is_expected.to create_cookbook_file '/etc/ssl/certs/ca-certificates.crt' }
       it { is_expected.to_not create_link '/etc/pki/tls/certs/ca-bundle.crt' }
       it { is_expected.to create_link '/opt/chef/embedded/ssl/certs/cacert.pem' }
+      it { is_expected.to create_ssl_cacert_hack 'test' }
     end
   end
 end
